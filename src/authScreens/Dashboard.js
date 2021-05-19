@@ -1,0 +1,50 @@
+import React from 'react';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {Divider} from 'react-native-paper';
+import DisplayChildFiles from '../components/DisplayChildFiles';
+import DisplayChildFolders from '../components/DisplayChildFolders';
+// import DisplayChildFolders from '../components/DisplayChildFolders';
+import useFolder from '../hooks/useFolder';
+import {globalStyles} from '../styles/styles';
+
+export default function Dashboard({navigation, route}) {
+  const {params} = route;
+  const {currentFolder, childFolders, childFiles} = useFolder(params?.folderId);
+  //   console.log('childFolders:', childFolders);
+
+  return (
+    <View style={globalStyles.component}>
+      <View style={styles.topView}>
+        <Text
+          onPress={() => navigation.navigate('Dashboard', {folderId: null})}>
+          Dashboard
+        </Text>
+      </View>
+      <View style={{marginTop: 5}}>
+        {childFolders && (
+          <DisplayChildFolders
+            folders={childFolders}
+            navigateToFolder={navigation.navigate}
+          />
+        )}
+        {childFolders?.length > 0 && childFiles?.length > 0 && (
+          <View style={{marginVertical: 10}}>
+            <Divider />
+          </View>
+        )}
+        {childFiles && (
+          <DisplayChildFiles
+            files={childFiles}
+            navigateToFolder={navigation.navigate}
+          />
+        )}
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  topView: {
+    marginVertical: 10,
+  },
+});
