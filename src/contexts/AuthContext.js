@@ -1,7 +1,7 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
 import auth from '@react-native-firebase/auth';
 import {useMsg} from './MsgContext';
-import Loading from '../components/Loading';
+import Loading from '../containers/Loading';
 
 export const AuthContext = createContext();
 

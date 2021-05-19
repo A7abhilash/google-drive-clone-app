@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, FlatList} from 'react-native';
 import {Divider} from 'react-native-paper';
 import DisplayChildFiles from '../components/DisplayChildFiles';
 import DisplayChildFolders from '../components/DisplayChildFolders';
+import Header from '../containers/Header';
 // import DisplayChildFolders from '../components/DisplayChildFolders';
 import useFolder from '../hooks/useFolder';
 import {globalColors, globalStyles} from '../styles/styles';
@@ -13,31 +14,34 @@ export default function Dashboard({navigation, route}) {
   //   console.log('childFiles:', childFiles);
 
   return (
-    <View style={globalStyles.component}>
-      <View style={styles.topView}>
-        <Text
-          onPress={() => navigation.navigate('Dashboard', {folderId: null})}>
-          Dashboard
-        </Text>
+    <>
+      <Header navigateToProfile={() => navigation.navigate('Profile')} />
+      <View style={globalStyles.component}>
+        <View style={styles.topView}>
+          <Text
+            onPress={() => navigation.navigate('Dashboard', {folderId: null})}>
+            Dashboard
+          </Text>
+        </View>
+        <View style={{marginTop: 5}}>
+          {childFolders && (
+            <DisplayChildFolders
+              folders={childFolders}
+              navigateToFolder={navigation.navigate}
+            />
+          )}
+          {childFolders?.length > 0 && childFiles?.length > 0 && (
+            <Divider
+              style={{
+                marginVertical: 5,
+                backgroundColor: globalColors.Secondary,
+              }}
+            />
+          )}
+          {childFiles && <DisplayChildFiles files={childFiles} />}
+        </View>
       </View>
-      <View style={{marginTop: 5}}>
-        {childFolders && (
-          <DisplayChildFolders
-            folders={childFolders}
-            navigateToFolder={navigation.navigate}
-          />
-        )}
-        {childFolders?.length > 0 && childFiles?.length > 0 && (
-          <Divider
-            style={{
-              marginVertical: 5,
-              backgroundColor: globalColors.Secondary,
-            }}
-          />
-        )}
-        {childFiles && <DisplayChildFiles files={childFiles} />}
-      </View>
-    </View>
+    </>
   );
 }
 
