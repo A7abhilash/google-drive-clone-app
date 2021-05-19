@@ -1,5 +1,11 @@
 import React from 'react';
-import {FlatList, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  FlatList,
+  Linking,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {Subheading} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {globalColors} from '../styles/styles';
@@ -7,9 +13,9 @@ import {globalColors} from '../styles/styles';
 const DisplayChildFiles = ({files}) => {
   const renderItem = ({item}) => (
     <TouchableOpacity
+      key={item.id}
       style={styles.file}
-      //   onPress={() => navigateToFolder('Dashboard', {folderId: item.id})}
-    >
+      onPress={() => Linking.openURL(item.url)}>
       <MaterialIcons
         name="file-copy"
         size={22}
@@ -26,6 +32,7 @@ const DisplayChildFiles = ({files}) => {
       keyExtractor={item => `${item.id}`}
       renderItem={renderItem}
       contentContainerStyle={styles.container}
+      horizontal
     />
   );
 };
@@ -34,8 +41,9 @@ export default DisplayChildFiles;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    flexShrink: 1,
+    // flexDirection: 'row',
+    // flexWrap: 'wrap',
+    paddingVertical: 10,
   },
   file: {
     marginRight: 10,

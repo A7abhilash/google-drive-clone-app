@@ -25,6 +25,7 @@ const DisplayChildFolders = ({folders, navigateToFolder}) => {
       keyExtractor={item => `${item.id}`}
       renderItem={renderItem}
       contentContainerStyle={styles.container}
+      horizontal
     />
   );
 };
@@ -34,7 +35,7 @@ export default DisplayChildFolders;
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    flexShrink: 1,
+    paddingBottom: 10,
   },
   folder: {
     marginRight: 10,

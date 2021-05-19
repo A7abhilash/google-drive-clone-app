@@ -5,12 +5,12 @@ import DisplayChildFiles from '../components/DisplayChildFiles';
 import DisplayChildFolders from '../components/DisplayChildFolders';
 // import DisplayChildFolders from '../components/DisplayChildFolders';
 import useFolder from '../hooks/useFolder';
-import {globalStyles} from '../styles/styles';
+import {globalColors, globalStyles} from '../styles/styles';
 
 export default function Dashboard({navigation, route}) {
   const {params} = route;
   const {currentFolder, childFolders, childFiles} = useFolder(params?.folderId);
-  //   console.log('childFolders:', childFolders);
+  //   console.log('childFiles:', childFiles);
 
   return (
     <View style={globalStyles.component}>
@@ -28,16 +28,14 @@ export default function Dashboard({navigation, route}) {
           />
         )}
         {childFolders?.length > 0 && childFiles?.length > 0 && (
-          <View style={{marginVertical: 10}}>
-            <Divider />
-          </View>
-        )}
-        {childFiles && (
-          <DisplayChildFiles
-            files={childFiles}
-            navigateToFolder={navigation.navigate}
+          <Divider
+            style={{
+              marginVertical: 5,
+              backgroundColor: globalColors.Secondary,
+            }}
           />
         )}
+        {childFiles && <DisplayChildFiles files={childFiles} />}
       </View>
     </View>
   );
