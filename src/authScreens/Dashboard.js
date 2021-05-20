@@ -3,6 +3,7 @@ import {View, Text, StyleSheet} from 'react-native';
 import {Divider} from 'react-native-paper';
 import DisplayChildFiles from '../components/DisplayChildFiles';
 import DisplayChildFolders from '../components/DisplayChildFolders';
+import FoldersBreadcrumb from '../components/FoldersBreadcrumb';
 import Header from '../containers/Header';
 import useFolder from '../hooks/useFolder';
 import {globalColors, globalStyles} from '../styles/styles';
@@ -17,10 +18,13 @@ export default function Dashboard({navigation, route}) {
       <Header navigateToProfile={() => navigation.navigate('Profile')} />
       <View style={globalStyles.component}>
         <View style={styles.topView}>
-          <Text
-            onPress={() => navigation.navigate('Dashboard', {folderId: null})}>
-            Dashboard
-          </Text>
+          {currentFolder && (
+            <FoldersBreadcrumb
+              path={currentFolder.path}
+              currentFolder={currentFolder}
+              navigateToFolder={navigation.navigate}
+            />
+          )}
         </View>
         <View style={styles.midView}>
           {childFolders && (
@@ -41,12 +45,11 @@ export default function Dashboard({navigation, route}) {
 
 const styles = StyleSheet.create({
   topView: {
-    marginVertical: 10,
-    flex: 0.15,
+    margin: 10,
   },
   midView: {
     marginTop: 5,
-    flex: 0.85,
+    flex: 1,
     backgroundColor: globalColors.Light,
     paddingHorizontal: 20,
     paddingVertical: 10,
