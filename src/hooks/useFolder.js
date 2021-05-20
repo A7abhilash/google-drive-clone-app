@@ -44,7 +44,7 @@ function useFolder(folderId = null) {
   // Get all the child folders in current folder
   useEffect(() => {
     if (currentUser) {
-      database
+      return database
         .folders(currentUser.uid)
         .where('parentId', '==', folderId)
         .orderBy('createdAt')
@@ -59,7 +59,7 @@ function useFolder(folderId = null) {
   // Get all the child files in current folder
   useEffect(() => {
     if (currentUser) {
-      database
+      return database
         .files(currentUser.uid)
         .where('parentId', '==', folderId)
         .orderBy('createdAt')

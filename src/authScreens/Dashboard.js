@@ -1,9 +1,10 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet, SafeAreaView, Text} from 'react-native';
 import {Divider} from 'react-native-paper';
 import DisplayChildFiles from '../components/DisplayChildFiles';
 import DisplayChildFolders from '../components/DisplayChildFolders';
 import FoldersBreadcrumb from '../components/FoldersBreadcrumb';
+import AddNewFolderButton from '../components/AddNewFolderButton';
 import Header from '../containers/Header';
 import useFolder from '../hooks/useFolder';
 import {globalColors, globalStyles} from '../styles/styles';
@@ -14,7 +15,7 @@ export default function Dashboard({navigation, route}) {
   //   console.log('childFiles:', childFiles);
 
   return (
-    <>
+    <SafeAreaView style={{flex: 1}}>
       <Header navigateToProfile={() => navigation.navigate('Profile')} />
       <View style={globalStyles.component}>
         <View style={styles.topView}>
@@ -37,9 +38,10 @@ export default function Dashboard({navigation, route}) {
             <Divider style={styles.divider} />
           )}
           {childFiles && <DisplayChildFiles files={childFiles} />}
+          <AddNewFolderButton currentFolder={currentFolder} />
         </View>
       </View>
-    </>
+    </SafeAreaView>
   );
 }
 
