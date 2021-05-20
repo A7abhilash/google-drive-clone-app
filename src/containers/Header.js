@@ -5,7 +5,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const Header = ({navigateToProfile}) => {
   return (
-    <Appbar.Header style={{backgroundColor: 'white'}}>
+    <Appbar.Header style={{backgroundColor: globalColors.Light}}>
       <Appbar.Content title="Google Drive Clone" />
       <Appbar.Action
         icon={() => (

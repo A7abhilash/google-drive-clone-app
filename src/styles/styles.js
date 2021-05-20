@@ -25,7 +25,6 @@ const globalColors = {
   Light: '#f8f9fa',
   Danger: '#dc3545',
   Success: '#28a745',
-  Warning: '#ffc107',
   Primary: '#0275d8',
   Info: '#5bc0de',
 };

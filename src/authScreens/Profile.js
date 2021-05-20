@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Button, Card, Headline} from 'react-native-paper';
+import {Button, Card} from 'react-native-paper';
 import {useAuth} from '../contexts/AuthContext';
 import {globalColors, globalStyles} from '../styles/styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';

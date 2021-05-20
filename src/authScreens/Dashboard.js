@@ -1,10 +1,9 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {Divider} from 'react-native-paper';
 import DisplayChildFiles from '../components/DisplayChildFiles';
 import DisplayChildFolders from '../components/DisplayChildFolders';
 import Header from '../containers/Header';
-// import DisplayChildFolders from '../components/DisplayChildFolders';
 import useFolder from '../hooks/useFolder';
 import {globalColors, globalStyles} from '../styles/styles';
 
@@ -31,12 +30,7 @@ export default function Dashboard({navigation, route}) {
             />
           )}
           {childFolders?.length > 0 && childFiles?.length > 0 && (
-            <Divider
-              style={{
-                marginVertical: 5,
-                backgroundColor: globalColors.Secondary,
-              }}
-            />
+            <Divider style={styles.divider} />
           )}
           {childFiles && <DisplayChildFiles files={childFiles} />}
         </View>
@@ -54,9 +48,14 @@ const styles = StyleSheet.create({
     marginTop: 5,
     flex: 0.85,
     backgroundColor: globalColors.Light,
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     elevation: 2,
+  },
+  divider: {
+    marginVertical: 5,
+    backgroundColor: globalColors.Secondary,
   },
 });
