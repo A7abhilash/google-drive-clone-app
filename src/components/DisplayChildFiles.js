@@ -1,14 +1,16 @@
 import React from 'react';
 import {
+  Dimensions,
   FlatList,
   Linking,
   StyleSheet,
   TouchableOpacity,
-  View,
 } from 'react-native';
-import {Subheading} from 'react-native-paper';
+import {Subheading, Caption} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {globalColors} from '../styles/styles';
+
+const {width} = Dimensions.get('screen');
 
 const DisplayChildFiles = ({files}) => {
   const renderItem = ({item}) => (
@@ -22,7 +24,11 @@ const DisplayChildFiles = ({files}) => {
         color={globalColors.Dark}
         style={{marginRight: 5}}
       />
-      <Subheading>{item.name}</Subheading>
+      <Subheading>
+        {item.name.length > 13
+          ? `${item.name.substring(0, 13)} ...`
+          : item.name}
+      </Subheading>
     </TouchableOpacity>
   );
 
@@ -31,8 +37,9 @@ const DisplayChildFiles = ({files}) => {
       data={files}
       keyExtractor={item => `${item.id}`}
       renderItem={renderItem}
-      contentContainerStyle={styles.container}
-      horizontal
+      numColumns={2}
+      ListHeaderComponent={files.length && <Caption>Files</Caption>}
+      ListHeaderComponentStyle={{marginBottom: 5}}
     />
   );
 };
@@ -40,11 +47,6 @@ const DisplayChildFiles = ({files}) => {
 export default DisplayChildFiles;
 
 const styles = StyleSheet.create({
-  container: {
-    // flexDirection: 'row',
-    // flexWrap: 'wrap',
-    paddingVertical: 10,
-  },
   file: {
     marginRight: 10,
     flexDirection: 'row',
@@ -54,5 +56,7 @@ const styles = StyleSheet.create({
     borderColor: globalColors.Dark,
     paddingHorizontal: 7,
     paddingVertical: 5,
+    marginBottom: 10,
+    width: (width - 55) / 2,
   },
 });

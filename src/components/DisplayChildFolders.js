@@ -1,8 +1,10 @@
 import React from 'react';
-import {FlatList, StyleSheet, TouchableOpacity} from 'react-native';
-import {Subheading} from 'react-native-paper';
+import {Dimensions, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
+import {Caption, Subheading} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {globalColors} from '../styles/styles';
+
+const {width} = Dimensions.get('screen');
 
 const DisplayChildFolders = ({folders, navigateToFolder}) => {
   const renderItem = ({item}) => (
@@ -15,7 +17,11 @@ const DisplayChildFolders = ({folders, navigateToFolder}) => {
         color={globalColors.Dark}
         style={{marginRight: 5}}
       />
-      <Subheading>{item.name}</Subheading>
+      <Subheading>
+        {item.name.length > 13
+          ? `${item.name.substring(0, 13)} ...`
+          : item.name}
+      </Subheading>
     </TouchableOpacity>
   );
 
@@ -24,8 +30,9 @@ const DisplayChildFolders = ({folders, navigateToFolder}) => {
       data={folders}
       keyExtractor={item => `${item.id}`}
       renderItem={renderItem}
-      contentContainerStyle={styles.container}
-      horizontal
+      numColumns={2}
+      ListHeaderComponent={folders.length && <Caption>Folders</Caption>}
+      ListHeaderComponentStyle={{marginBottom: 5}}
     />
   );
 };
@@ -33,10 +40,6 @@ const DisplayChildFolders = ({folders, navigateToFolder}) => {
 export default DisplayChildFolders;
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    paddingBottom: 10,
-  },
   folder: {
     marginRight: 10,
     flexDirection: 'row',
@@ -46,5 +49,7 @@ const styles = StyleSheet.create({
     borderColor: globalColors.Dark,
     paddingHorizontal: 7,
     paddingVertical: 5,
+    marginBottom: 10,
+    width: (width - 55) / 2,
   },
 });
