@@ -1,5 +1,11 @@
 import React from 'react';
-import {Dimensions, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  Dimensions,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {Caption, Subheading} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {globalColors} from '../styles/styles';
@@ -26,14 +32,16 @@ const DisplayChildFolders = ({folders, navigateToFolder}) => {
   );
 
   return (
-    <FlatList
-      data={folders}
-      keyExtractor={item => `${item.id}`}
-      renderItem={renderItem}
-      numColumns={2}
-      ListHeaderComponent={folders.length && <Caption>Folders</Caption>}
-      ListHeaderComponentStyle={{marginBottom: 5}}
-    />
+    <View>
+      <FlatList
+        data={folders}
+        keyExtractor={item => `${item.id}`}
+        renderItem={renderItem}
+        numColumns={2}
+        ListHeaderComponent={folders.length && <Caption>Folders</Caption>}
+        ListHeaderComponentStyle={{marginBottom: 5}}
+      />
+    </View>
   );
 };
 

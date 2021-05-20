@@ -1,18 +1,44 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Button, Card} from 'react-native-paper';
+import {Button, Card, Headline} from 'react-native-paper';
 import {useAuth} from '../contexts/AuthContext';
 import {globalColors, globalStyles} from '../styles/styles';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export default function Profile() {
   const {currentUser, logout} = useAuth();
 
   return (
-    <View style={globalStyles.component}>
+    <View style={{...globalStyles.component, paddingHorizontal: 20}}>
+      <View style={styles.view} />
       <Card style={styles.card}>
-        <Card.Title title={currentUser.email} subtitle="Profile" />
+        {/* <Card.Content>
+          <Headline>Profile</Headline>
+        </Card.Content> */}
+        <Card.Title
+          title={currentUser.email}
+          subtitle="Email"
+          left={() => (
+            <MaterialIcons
+              name="account-circle"
+              size={40}
+              color={globalColors.Dark}
+            />
+          )}
+        />
         <Card.Actions>
-          <Button color={globalColors.Danger} onPress={logout}>
+          <Button
+            mode="contained"
+            icon={() => (
+              <MaterialIcons
+                name="logout"
+                size={25}
+                color={globalColors.Light}
+              />
+            )}
+            style={{marginLeft: 15}}
+            color={globalColors.Danger}
+            onPress={logout}>
             Logout
           </Button>
         </Card.Actions>
@@ -22,7 +48,9 @@ export default function Profile() {
 }
 
 const styles = StyleSheet.create({
+  view: {flex: 0.45},
   card: {
-    marginTop: 200,
+    borderRadius: 20,
+    elevation: 2,
   },
 });

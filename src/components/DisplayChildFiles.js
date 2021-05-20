@@ -5,6 +5,7 @@ import {
   Linking,
   StyleSheet,
   TouchableOpacity,
+  View,
 } from 'react-native';
 import {Subheading, Caption} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -33,14 +34,16 @@ const DisplayChildFiles = ({files}) => {
   );
 
   return (
-    <FlatList
-      data={files}
-      keyExtractor={item => `${item.id}`}
-      renderItem={renderItem}
-      numColumns={2}
-      ListHeaderComponent={files.length && <Caption>Files</Caption>}
-      ListHeaderComponentStyle={{marginBottom: 5}}
-    />
+    <View>
+      <FlatList
+        data={files}
+        keyExtractor={item => `${item.id}`}
+        renderItem={renderItem}
+        numColumns={2}
+        ListHeaderComponent={files.length && <Caption>Files</Caption>}
+        ListHeaderComponentStyle={{marginBottom: 5}}
+      />
+    </View>
   );
 };
 

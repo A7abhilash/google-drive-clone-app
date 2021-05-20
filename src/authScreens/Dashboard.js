@@ -23,7 +23,7 @@ export default function Dashboard({navigation, route}) {
             Dashboard
           </Text>
         </View>
-        <View style={{marginTop: 5}}>
+        <View style={styles.midView}>
           {childFolders && (
             <DisplayChildFolders
               folders={childFolders}
@@ -48,5 +48,15 @@ export default function Dashboard({navigation, route}) {
 const styles = StyleSheet.create({
   topView: {
     marginVertical: 10,
+    flex: 0.15,
+  },
+  midView: {
+    marginTop: 5,
+    flex: 0.85,
+    backgroundColor: globalColors.Light,
+    padding: 20,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    elevation: 2,
   },
 });

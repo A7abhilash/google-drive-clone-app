@@ -10,7 +10,6 @@ const globalStyles = StyleSheet.create({
   component: {
     flex: 1,
     backgroundColor: '#eee',
-    paddingHorizontal: 20,
   },
   textTitle: {
     fontSize: 30,
