@@ -135,17 +135,12 @@ const AddNewFolderButton = ({currentFolder}) => {
           color={globalColors.Success}
         />
       </TouchableOpacity>
-      {/* <Title onPress={() => setOpenModal(true)}>Open</Title> */}
       <Modal visible={openModal} animationType="fade" transparent>
         <View style={styles.centeredView}>
           <View style={styles.innerView}>
             <Title style={styles.text}>{status}</Title>
-            {/* <Title style={styles.text} onPress={() => setOpenModal(false)}>
-              Close
-            </Title> */}
             <ProgressBar
               progress={Math.floor(uploadProgress) / 100}
-              //   progress={0.5}
               color={globalColors.Warning}
               style={styles.progressBar}
             />
