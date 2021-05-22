@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import {database} from '../firebase';
 import {useAuth} from '../contexts/AuthContext';
+import {useMsg} from '../contexts/MsgContext';
 
 export const ROOT_FOLDER = {
   name: 'Home',
@@ -10,6 +11,7 @@ export const ROOT_FOLDER = {
 };
 
 function useFolder(folderId = null) {
+  const {setToast} = useMsg();
   const {currentUser} = useAuth();
   const [currentFolder, setCurrentFolder] = useState(null);
   const [childFolders, setChildFolders] = useState(null);
@@ -29,7 +31,7 @@ function useFolder(folderId = null) {
             if (doc.data()) {
               setCurrentFolder(database.formatDocument(doc));
             } else {
-              alert('No folder found...');
+              setToast('No folder found...');
               setCurrentFolder({
                 path: [{name: 'Go back to root', id: null}],
               });

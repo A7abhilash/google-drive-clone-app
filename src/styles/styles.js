@@ -27,6 +27,7 @@ const globalColors = {
   Success: '#28a745',
   Primary: '#0275d8',
   Info: '#5bc0de',
+  Warning: '#f0ad4e',
 };
 
 export {globalStyles, globalColors};

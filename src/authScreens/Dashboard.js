@@ -5,6 +5,7 @@ import DisplayChildFiles from '../components/DisplayChildFiles';
 import DisplayChildFolders from '../components/DisplayChildFolders';
 import FoldersBreadcrumb from '../components/FoldersBreadcrumb';
 import AddNewFolderButton from '../components/AddNewFolderButton';
+import AddNewFileButton from '../components/AddNewFileButton';
 import Header from '../containers/Header';
 import useFolder from '../hooks/useFolder';
 import {globalColors, globalStyles} from '../styles/styles';
@@ -39,6 +40,7 @@ export default function Dashboard({navigation, route}) {
           )}
           {childFiles && <DisplayChildFiles files={childFiles} />}
           <AddNewFolderButton currentFolder={currentFolder} />
+          <AddNewFileButton currentFolder={currentFolder} />
         </View>
       </View>
     </SafeAreaView>

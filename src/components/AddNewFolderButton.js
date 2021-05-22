@@ -57,7 +57,7 @@ const AddNewFolderButton = ({currentFolder}) => {
         <MaterialIcons
           name="create-new-folder"
           size={28}
-          color={globalColors.Light}
+          color={globalColors.Success}
         />
       </TouchableOpacity>
       <Modal visible={openModal} animationType="fade" transparent>
@@ -102,7 +102,8 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 50,
-    backgroundColor: globalColors.Success,
+    backgroundColor: globalColors.Light,
+    elevation: 5,
     bottom: 15,
     right: 15,
     justifyContent: 'center',
