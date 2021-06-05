@@ -5,7 +5,6 @@ import {
   Linking,
   StyleSheet,
   TouchableOpacity,
-  View,
 } from 'react-native';
 import {Subheading, Caption} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -21,9 +20,9 @@ const DisplayChildFiles = ({files}) => {
       onPress={() => Linking.openURL(item.url)}>
       <MaterialIcons
         name="file-copy"
-        size={22}
+        size={80}
         color={globalColors.Dark}
-        style={{marginRight: 5}}
+        style={{marginRight: 5, paddingVertical: 40}}
       />
       <Subheading>
         {item.name.length > 13
@@ -34,16 +33,15 @@ const DisplayChildFiles = ({files}) => {
   );
 
   return (
-    <View>
-      <FlatList
-        data={files}
-        keyExtractor={item => `${item.id}`}
-        renderItem={renderItem}
-        numColumns={2}
-        ListHeaderComponent={files.length && <Caption>Files</Caption>}
-        ListHeaderComponentStyle={{marginBottom: 5}}
-      />
-    </View>
+    <FlatList
+      data={files}
+      keyExtractor={item => `${item.id}`}
+      renderItem={renderItem}
+      numColumns={2}
+      ListHeaderComponent={files.length && <Caption>Files</Caption>}
+      ListHeaderComponentStyle={{marginBottom: 5}}
+      showsVerticalScrollIndicator={false}
+    />
   );
 };
 
@@ -52,7 +50,7 @@ export default DisplayChildFiles;
 const styles = StyleSheet.create({
   file: {
     marginRight: 10,
-    flexDirection: 'row',
+    // flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 5,
     borderWidth: 1,
