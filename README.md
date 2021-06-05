@@ -17,9 +17,9 @@
 <div align="center">
 <img src="screenshots/Screenshot_1621681410.png" style="border-radius:5px;" alt="Login" height="400">
 <img src="screenshots/Screenshot_1621681413.png" style="border-radius:5px;" alt="Register" height="400">
-<img src="screenshots/Screenshot_1621681330.png" style="border-radius:5px;" alt="Home(Root folder)" height="400">
-<img src="screenshots/Screenshot_1621681350.png" style="border-radius:5px;" alt="Home(Sub folders)" height="400">
-<img src="screenshots/Screenshot_1621681358.png" style="border-radius:5px;" alt="Add new folder modal" height="400">
-<img src="screenshots/Screenshot_1621681374.png" style="border-radius:5px;" alt="Status of uploading file" height="400">
+<img src="screenshots/Screenshot_1622902324.png" style="border-radius:5px;" alt="Home(Root folder)" height="400">
+<img src="screenshots/Screenshot_1622902333.png" style="border-radius:5px;" alt="Home(Sub folders)" height="400">
+<img src="screenshots/Screenshot_1622902340.png" style="border-radius:5px;" alt="Add new folder modal" height="400">
+<img src="screenshots/Screenshot_1622902449.png" style="border-radius:5px;" alt="Status of uploading file" height="400">
 <img src="screenshots/Screenshot_1621681404.png" style="border-radius:5px;" alt="Profile Screen" height="400">
 </div>
